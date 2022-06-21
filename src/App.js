@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import * as Sentry from "@sentry/react";
+import { useState } from "react/cjs/react.development";
+import CytoscapeContainer from "./cytoscape";
 
 function App() {
+  const [text, setText] = useState("test");
+  const methodDoesNotExist = async () => {
+    try {
+      setText("wooo");
+      throw Error();
+    } catch (e) {
+      Sentry.captureException(e);
+      console.error(e);
+    }
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/**sentry test */}
+      {/* <p>test sentry</p>
+      {text}
+      <button onClick={methodDoesNotExist}>error trigger button</button> */}
+
+      <CytoscapeContainer />
     </div>
   );
 }
