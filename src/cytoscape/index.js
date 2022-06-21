@@ -90,9 +90,20 @@ function CytoscapeContainer() {
       },
     };
 
-    cytoscape(config);
+    const cy = cytoscape(config);
+    cy.on("tap", (e) => {
+      console.log(e.target);
+      const url = e.target.data("url");
+      if (url && url !== "") {
+        window.open(url);
+      }
+    });
   }, []);
-  return <div id="cy" ref={cytoRef} style={{ height: "100vh" }}></div>;
+  return (
+    <>
+      <div id="cy" ref={cytoRef} style={{ height: "100vh" }}></div>
+    </>
+  );
 }
 
 export default CytoscapeContainer;
