@@ -7,7 +7,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 Sentry.init({
-  dsn: "http://cc5549dc3a1e4e1eaea3f3af1995af74@172.20.18.10:9000/3",
+  dsn: process.env.REACT_APP_SENTRY_DSN,
   integrations: [new BrowserTracing()],
 
   // Set tracesSampleRate to 1.0 to capture 100%
