@@ -37,9 +37,15 @@
   }
 }
 
-#cy,
 html,
 body {
   width: 100%;
+  height: 100%;
+}
+
+.App {
+  height: 500px;
+}
+#cy {
   height: 100%;
 }
